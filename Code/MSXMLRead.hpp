@@ -5,12 +5,13 @@
 #include <utility>
 #include <algorithm>
 #include <msxml.h>
+#include <tchar.h>
 
 class Node {
 private:
 public:
 	Node() = default;
-	std::basic_string<TCHAR> NodeFullPath;
+	std::basic_string<TCHAR> NodePath;
 	IXMLDOMNodeList* NodeList;
 	long Length;
 	std::basic_string<TCHAR> operator [] (const long Count) const; // ちょっと長いからcpp側に定義
@@ -19,23 +20,32 @@ public:
 class MSXMLRead {
 private:
 	IXMLDOMDocument* lpXmlDoc;
-	IXMLDOMNodeList* XmlSetNodeList(const TCHAR* NodePath, long &Length);
+	IXMLDOMNodeList* XmlSetNodeList(const std::basic_string<TCHAR> NodePath, long &Length);
 	std::vector<Node> Data;
-	void LoadFromFile(const TCHAR* NodeFullPath);
+	std::basic_string<TCHAR> CommonPath;
+	void LoadFromFile(const std::basic_string<TCHAR> NodePath);
 public:
-	MSXMLRead(const TCHAR* FileName);
-	long CheckLength(const TCHAR* NodeFullPath);
-	void Check(const TCHAR* NodeFullPath) { this->CheckLength(NodeFullPath); }
-	template<typename ...Args> void Check(const TCHAR* NodeFullPath, Args ...arg) {
-		this->CheckLength(NodeFullPath);
+	MSXMLRead(const std::basic_string<TCHAR> FileName, const std::basic_string<TCHAR> CommonPath = TEXT(""));
+	~MSXMLRead() { 
+		this->lpXmlDoc->Release();
+		this->Data.clear();
+	}
+	long CheckLength(const std::basic_string<TCHAR> NodePath);
+	void Check(const std::basic_string<TCHAR> NodePath) { this->CheckLength(NodePath); }
+	template<class ...Args> void Check(const std::basic_string<TCHAR> NodePath, Args ...arg) {
+		this->CheckLength(NodePath);
 		this->Check(std::forward<Args>(arg)...);
 	}
-	void Load(const TCHAR* NodeFullPath) { this->LoadFromFile(NodeFullPath); }
-	template<typename ...Args> void Load(const TCHAR* NodeFullPath, Args ...arg) {
-		this->LoadFromFile(NodeFullPath);
+	void Load(const std::basic_string<TCHAR> NodePath) { this->LoadFromFile(NodePath); }
+	template<class ...Args> void Load(const std::basic_string<TCHAR> NodePath, Args ...arg) {
+		this->LoadFromFile(NodePath);
 		this->Load(std::forward<Args>(arg)...);
 	}
-	Node operator [] (const size_t Count) const { return this->Data[Count]; }
-	Node operator | (const std::basic_string<TCHAR> NodeFullPath) const; // WStringToStringを使う関係でcpp側に定義
+	size_t size() const { return this->Data.size(); }
+	Node at(const size_t Count) const { return this->Data[Count]; }
+	void clear() { this->Data.clear(); }
+	void ChangeCommonPath(const std::basic_string<TCHAR> NewRoot);
+	Node operator [] (const size_t Count) const { return this->at(Count); }
+	Node operator [] (const std::basic_string<TCHAR> NodePath) const; // WStringToStringを使う関係でcpp側に定義
 };
 #endif
