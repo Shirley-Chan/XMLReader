@@ -1,4 +1,4 @@
-#ifndef __MSXMLREAD_HPP__
+ï»¿#ifndef __MSXMLREAD_HPP__
 #define __MSXMLREAD_HPP__
 #include <string>
 #include <vector>
@@ -14,7 +14,7 @@ public:
 	std::basic_string<TCHAR> NodePath;
 	IXMLDOMNodeList* NodeList;
 	long Length;
-	std::basic_string<TCHAR> operator [] (const long Count) const; // ‚¿‚å‚Á‚Æ’·‚¢‚©‚çcpp‘¤‚É’è‹`
+	std::basic_string<TCHAR> operator [] (const long Count) const; // ã¡ã‚‡ã£ã¨é•·ã„ã‹ã‚‰cppå´ã«å®šç¾©
 };
 
 class MSXMLRead {
@@ -46,6 +46,6 @@ public:
 	void clear() { this->Data.clear(); }
 	void ChangeCommonPath(const std::basic_string<TCHAR> NewRoot);
 	Node operator [] (const size_t Count) const { return this->at(Count); }
-	Node operator [] (const std::basic_string<TCHAR> NodePath) const; // WStringToString‚ğg‚¤ŠÖŒW‚Åcpp‘¤‚É’è‹`
+	Node operator [] (const std::basic_string<TCHAR> NodePath) const; // WStringToStringã‚’ä½¿ã†é–¢ä¿‚ã§cppå´ã«å®šç¾©
 };
 #endif

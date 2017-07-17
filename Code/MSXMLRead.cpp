@@ -1,4 +1,4 @@
-#include "MSXMLRead.hpp"
+ï»¿#include "MSXMLRead.hpp"
 #include <Shlwapi.h>
 #include <comdef.h>
 #include <type_traits>
@@ -9,11 +9,11 @@ namespace Win32Error {
 	std::string GetErrorMessage(const unsigned long ErrorCode) {
 		char* lpMessageBuffer = nullptr;
 		const DWORD length = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL, ErrorCode, LANG_USER_DEFAULT, (LPSTR)&lpMessageBuffer, 0, NULL);
-		if (length == 0) throw std::runtime_error("ƒGƒ‰[ƒƒbƒZ[ƒWæ“¾‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B\nƒGƒ‰[ƒR[ƒh : " + std::to_string(GetLastError()));
+		if (length == 0) throw std::runtime_error("ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚\nã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ : " + std::to_string(GetLastError()));
 		DWORD i = length - 3;
-		for (; '\r' != lpMessageBuffer[i] && '\n' != lpMessageBuffer[i] && '\0' != lpMessageBuffer[i]; i++);//‰üs•¶šíœ
+		for (; '\r' != lpMessageBuffer[i] && '\n' != lpMessageBuffer[i] && '\0' != lpMessageBuffer[i]; i++);//æ”¹è¡Œæ–‡å­—å‰Šé™¤
 		lpMessageBuffer[i] = '\0';
-		std::string s = "ƒGƒ‰[ƒR[ƒh : " + std::to_string(ErrorCode) + "@" + lpMessageBuffer;
+		std::string s = "ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ : " + std::to_string(ErrorCode) + "ã€€" + lpMessageBuffer;
 		LocalFree(lpMessageBuffer);
 		return s;
 	}

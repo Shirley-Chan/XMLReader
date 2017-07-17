@@ -1,4 +1,4 @@
-#ifndef __QUIZ_HPP__
+ï»¿#ifndef __QUIZ_HPP__
 #define __QUIZ_HPP__
 #include <iostream>
 #include <string>
@@ -20,7 +20,7 @@ public:
 		: Question(Question), Explanation(Explanation), CorrectAnswer(CorrectAnswer), NumberOfChoices(NumberOfChoices), IsNotForBeginner(IsNotForBeginner) {}
 	void PrintQuestion() const { OUTPUT << this->Question << std::endl; }
 	bool JudgeCorrect(const int UserAnswer) const { return this->CorrectAnswer == UserAnswer; }
-	void PrintCorrectAnswer() const { OUTPUT << _T("³‰ð‚Í") << this->CorrectAnswer << _T("‚Å‚·B") << std::endl; }
+	void PrintCorrectAnswer() const { OUTPUT << _T("æ­£è§£ã¯") << this->CorrectAnswer << _T("ã§ã™ã€‚") << std::endl; }
 	void PrintExplanation() const { OUTPUT << this->Explanation << std::endl; }
 	int NumberOfChoices;
 	bool IsNotForBeginner;

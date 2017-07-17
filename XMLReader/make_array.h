@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 // code copy from make_array.h in repositry xml_text_cooking_quiz(Author:yumetodo)
 
 #include <array>

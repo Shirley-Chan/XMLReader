@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <locale>
 #include "../Code/MSXMLRead.hpp"
 #include "Quiz.hpp"
@@ -50,22 +50,22 @@ static inline bool InputYesNo(const std::string Message) {
 }
 
 static inline int InputYesNo() {
-	return Input("‚Í‚¢c‚P@‚¢‚¢‚¦c‚Q", 2, 1);
+	return Input("ã¯ã„â€¦ï¼‘ã€€ã„ã„ãˆâ€¦ï¼’", 2, 1);
 }
 
 namespace PreludeQuestion {
 	void Question1() {
-		std::cout << "–‘OŠm”F‚P\n‚ ‚È‚½‚ÍƒpƒeƒBƒVƒG‚Ü‚½‚ÍƒpƒeƒBƒVƒG[ƒ‹‚Å‚·‚©H" << std::endl;
+		std::cout << "äº‹å‰ç¢ºèªï¼‘\nã‚ãªãŸã¯ãƒ‘ãƒ†ã‚£ã‚·ã‚¨ã¾ãŸã¯ãƒ‘ãƒ†ã‚£ã‚·ã‚¨ãƒ¼ãƒ«ã§ã™ã‹ï¼Ÿ" << std::endl;
 	}
 	void Question2() {
-		std::cout << "–‘OŠm”F‚Q\n‚ ‚È‚½‚Í–²FƒpƒeƒBƒVƒG[ƒ‹‚ğ‹’®‚µ‚Ä‚»‚Ì“à—e‚â‚»‚±‚Åo‚Ä‚«‚½’m¯‚ğ‘S‚ÄŠo‚¦‚Ä‚¢‚Ü‚·‚©H" << std::endl;
+		std::cout << "äº‹å‰ç¢ºèªï¼’\nã‚ãªãŸã¯å¤¢è‰²ãƒ‘ãƒ†ã‚£ã‚·ã‚¨ãƒ¼ãƒ«ã‚’è¦–è´ã—ã¦ãã®å†…å®¹ã‚„ãã“ã§å‡ºã¦ããŸçŸ¥è­˜ã‚’å…¨ã¦è¦šãˆã¦ã„ã¾ã™ã‹ï¼Ÿ" << std::endl;
 	}
 	int CalcGameLevel(std::pair<int, int> ChoosedAnswer) {
-		/*ƒŒƒxƒ‹
-		‚Í‚¢A‚Í‚¢		F	1
-		‚Í‚¢A‚¢‚¢‚¦	F	2
-		‚¢‚¢‚¦A‚Í‚¢	F	3
-		‚¢‚¢‚¦A‚¢‚¢‚¦	F	4
+		/*ãƒ¬ãƒ™ãƒ«
+		ã¯ã„ã€ã¯ã„		ï¼š	1
+		ã¯ã„ã€ã„ã„ãˆ	ï¼š	2
+		ã„ã„ãˆã€ã¯ã„	ï¼š	3
+		ã„ã„ãˆã€ã„ã„ãˆ	ï¼š	4
 		*/
 		if (1 == ChoosedAnswer.first) ChoosedAnswer.first--;
 		return ChoosedAnswer.first + ChoosedAnswer.second;
@@ -75,8 +75,8 @@ namespace PreludeQuestion {
 		for (bool LastAnswer = false; !LastAnswer;
 			LastAnswer = [](const std::pair<int, int> ChoosedAnswer) {
 			ClearConsole();
-				auto YesNo = [](const int YesNoFlag) { return 1 == YesNoFlag ? "‚Í‚¢" : "‚¢‚¢‚¦"; };
-				std::cout << "‚±‚ê‚Å‚æ‚ë‚µ‚¢‚Å‚·‚©H" << std::endl;
+				auto YesNo = [](const int YesNoFlag) { return 1 == YesNoFlag ? "ã¯ã„" : "ã„ã„ãˆ"; };
+				std::cout << "ã“ã‚Œã§ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ" << std::endl;
 				Question1();
 				std::cout << YesNo(ChoosedAnswer.first) << std::endl << std::endl;
 				Question2();
@@ -92,7 +92,7 @@ namespace PreludeQuestion {
 			ChoosedAnswer.second = InputYesNo();
 		}
 		ClearConsole();
-		std::cout << "‰ñ“š‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚·B‚»‚ê‚Å‚Ín‚ß‚Ü‚·B" << std::endl;
+		std::cout << "å›ç­”ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ã€‚ãã‚Œã§ã¯å§‹ã‚ã¾ã™ã€‚" << std::endl;
 		PauseConsole();
 		ClearConsole();
 		return CalcGameLevel(ChoosedAnswer);
@@ -105,7 +105,7 @@ std::vector<Quiz> LoadQuiz() {
 	if (QuizData.CheckLength(TEXT("question")) == QuizData.CheckLength(TEXT("explanation"))
 		&& QuizData.CheckLength(TEXT("question")) == QuizData.CheckLength(TEXT("IsNotForBiginner"))
 		&& QuizData.CheckLength(TEXT("question")) == QuizData.CheckLength(TEXT("choices_num"))
-		&& (long)CorrectAnswer.size() == QuizData.CheckLength(TEXT("question"))) throw std::runtime_error("–â‘è‚Ì“Ç‚İ‚İ‚ÌÛ‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B");
+		&& (long)CorrectAnswer.size() == QuizData.CheckLength(TEXT("question"))) throw std::runtime_error("å•é¡Œã®èª­ã¿è¾¼ã¿ã®éš›ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚");
 	QuizData.Load<std::basic_string<TCHAR>>(TEXT("question"), TEXT("explanation"), TEXT("IsNotForBiginner"), TEXT("choices_num"));
 	std::vector<Quiz> re;
 	for (size_t i = 0; i < CorrectAnswer.size(); i++) {
@@ -133,7 +133,7 @@ auto DecideSequenceOfQuestionNumber(const int GameLevel) {
 bool Question(const Quiz quiz, std::vector<int> AnswerResultBuffer, const int GameLevel) {
 	quiz.PrintQuestion();
 	bool Continue = quiz.JudgeCorrect(Input(quiz.NumberOfChoices, 1));
-	std::cout << (Continue ? "³‰ğ" : "•s³‰ğ") << "‚Å‚·B" << std::endl;
+	std::cout << (Continue ? "æ­£è§£" : "ä¸æ­£è§£") << "ã§ã™ã€‚" << std::endl;
 	AnswerResultBuffer.emplace_back(Continue ? 1 : 0);
 	if (!Continue && 4 == GameLevel) {
 		quiz.PrintCorrectAnswer();
@@ -154,26 +154,26 @@ bool IsAllClear(const std::vector<int> AnswerResultBuffer) {
 static void ShowLastMessage(const bool JudgeCorrect, const size_t IsAllClear, const int GameLevel) {
 	static const auto message = make_array(
 		make_array(
-			"“ü—Íƒ~ƒX‚©—V‚Ñ‚¾‚ÆM‚¶‚Ä‚¢‚Ü‚·B",
-			"“ü—Íƒ~ƒX‚©—V‚Ñ‚¾‚ÆM‚¶‚Ä‚¢‚Ü‚·B",
-			"–²ƒpƒeƒB‚ÅÄŠm”F‚µ‚Ä‚à‚¤ˆê“x’§í‚µ‚Ä‚­‚¾‚³‚¢‚ËB",
-			"Ÿ‚ÍŠæ’£‚Á‚Ä‚­‚¾‚³‚¢‚ËB"
+			"å…¥åŠ›ãƒŸã‚¹ã‹éŠã³ã ã¨ä¿¡ã˜ã¦ã„ã¾ã™ã€‚",
+			"å…¥åŠ›ãƒŸã‚¹ã‹éŠã³ã ã¨ä¿¡ã˜ã¦ã„ã¾ã™ã€‚",
+			"å¤¢ãƒ‘ãƒ†ã‚£ã§å†ç¢ºèªã—ã¦ã‚‚ã†ä¸€åº¦æŒ‘æˆ¦ã—ã¦ãã ã•ã„ã­ã€‚",
+			"æ¬¡ã¯é ‘å¼µã£ã¦ãã ã•ã„ã­ã€‚"
 		),
 		make_array(
-			"ŠÈ’P‚Å‚µ‚½‚æ‚ËHŠÈ’P‚·‚¬‚Ä‚·‚¢‚Ü‚¹‚ñB",
-			"ŠÈ’P‚Å‚µ‚½‚æ‚ËHŠÈ’P‚·‚¬‚Ä‚·‚¢‚Ü‚¹‚ñB",
-			"‚ ‚È‚½‚Í–{“–‚É–²ƒpƒeƒBˆ¤‚µ‚Ä‚Ü‚·‚ËB",
-			"ƒNƒŠƒA‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·B"
+			"ç°¡å˜ã§ã—ãŸã‚ˆã­ï¼Ÿç°¡å˜ã™ãã¦ã™ã„ã¾ã›ã‚“ã€‚",
+			"ç°¡å˜ã§ã—ãŸã‚ˆã­ï¼Ÿç°¡å˜ã™ãã¦ã™ã„ã¾ã›ã‚“ã€‚",
+			"ã‚ãªãŸã¯æœ¬å½“ã«å¤¢ãƒ‘ãƒ†ã‚£æ„›ã—ã¦ã¾ã™ã­ã€‚",
+			"ã‚¯ãƒªã‚¢ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ã€‚"
 		)
 	);
 	std::cout << message[IsAllClear][GameLevel -1] << std::endl;
-	if (JudgeCorrect && 4 == GameLevel && IsAllClear == 0) std::wcout << L"Ÿ‚Í‘S–â³‰ğ‚ğ–Úw‚µ‚Ü‚µ‚å‚¤B" << std::endl;
+	if (JudgeCorrect && 4 == GameLevel && IsAllClear == 0) std::cout << "æ¬¡ã¯å…¨å•æ­£è§£ã‚’ç›®æŒ‡ã—ã¾ã—ã‚‡ã†ã€‚" << std::endl;
 	PauseConsole();
 	ClearConsole();
 	std::cout
-		<< "‚±‚ÌƒQ[ƒ€‚Ì–â‘è‚ÍˆÈã‚É‚È‚è‚Ü‚·B‚à‚µ‚±‚ñ‚ÈƒQ[ƒ€ì‚Á‚Ä‚Ù‚µ‚¢A–â‘è‚ğ‘‚â‚µ‚Ä‚Ù‚µ‚¢“™‚ ‚è‚Ü‚µ‚½‚çAreadme‚É‘‚©‚ê‚Ü‚µ‚½ƒ[ƒ‹ƒAƒhƒŒƒX‚ÖB"
+		<< "ã“ã®ã‚²ãƒ¼ãƒ ã®å•é¡Œã¯ä»¥ä¸Šã«ãªã‚Šã¾ã™ã€‚ã‚‚ã—ã“ã‚“ãªã‚²ãƒ¼ãƒ ä½œã£ã¦ã»ã—ã„ã€å•é¡Œã‚’å¢—ã‚„ã—ã¦ã»ã—ã„ç­‰ã‚ã‚Šã¾ã—ãŸã‚‰ã€readmeã«æ›¸ã‹ã‚Œã¾ã—ãŸãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¸ã€‚"
 		<< std::endl
-		<< "VìƒQ[ƒ€î•ñ“™‚ÍAreadme‚ÌƒŠƒ“ƒN‚©‚çƒAƒNƒZƒX‚Å‚«‚Ü‚·ƒuƒƒO‚É‡Ÿ‹LÚ‚µ‚Ä‚¢‚«‚Ü‚·B"
+		<< "æ–°ä½œã‚²ãƒ¼ãƒ æƒ…å ±ç­‰ã¯ã€readmeã®ãƒªãƒ³ã‚¯ã‹ã‚‰ã‚¢ã‚¯ã‚»ã‚¹ã§ãã¾ã™ãƒ–ãƒ­ã‚°ã«é †æ¬¡è¨˜è¼‰ã—ã¦ã„ãã¾ã™ã€‚"
 		<< std::endl;
 	PauseConsole();
 }
@@ -183,8 +183,8 @@ int main() {
 #if defined(UNICODE)
 		std::wcout.imbue(std::locale(""));
 #endif
-		std::cout << "ƒNƒCƒY@`‚ ‚È‚½‚ÍƒpƒeƒBƒVƒG`" << std::endl;
-		if (!InputYesNo("ŠJnc‚P@I—¹c‚Q")) return 0;
+		std::cout << "ã‚¯ã‚¤ã‚ºã€€ï½ã‚ãªãŸã¯ãƒ‘ãƒ†ã‚£ã‚·ã‚¨ï½" << std::endl;
+		if (!InputYesNo("é–‹å§‹â€¦ï¼‘ã€€çµ‚äº†â€¦ï¼’")) return 0;
 		const std::vector<Quiz> QuizList = LoadQuiz();
 		const int GameLevel = PreludeQuestion::ChooseQuestionLevel();
 		const auto SequenceOfQuestionNumber = DecideSequenceOfQuestionNumber(GameLevel);
