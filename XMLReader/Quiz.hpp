@@ -4,7 +4,7 @@
 #include <string>
 #include <tchar.h>
 #if defined(UNICODE)
-#define OUTPUT std::wcout;
+#define OUTPUT std::wcout
 #else
 #define OUTPUT std::cout
 #endif
